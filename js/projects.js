@@ -45,11 +45,11 @@ window.PORTFOLIO_PROJECTS = [
     {
         id: "shuriken-obby",
         title: "Shuriken Obby",
-        categories: ["Games", "Systems"],
+        categories: ["Games", "Systems","UI"],
         status: "Prototype",
         role: "Programmer and game designer",
         description: "A Roblox obstacle game built around throwing a shuriken and teleporting to its location, creating a unique movement and puzzle mechanic.",
-        longDescription: "A movement-driven obstacle game built around one strong mechanic: throw a shuriken, then teleport to its landing point. The prototype combines custom projectile behavior, carefully validated teleportation, slow-motion feedback, and progression features to turn traversal into a skill-based puzzle.",
+        longDescription: "Shuriken Obby is a movement-based obstacle game built around one main mechanic: throw a shuriken and teleport to wherever it lands. I developed the game entirely on my own, handling the programming, game design, UI/UX, level design, visual effects, progression systems, and overall player experience. I also created the custom projectile and teleportation systems, added slow-motion feedback, and designed each obstacle to turn the movement mechanic into a skill-based challenge.",
         technologies: ["Luau", "Object-oriented programming", "Roblox Studio", "Server validation"],
         systems: [
             "Custom movement", "Shuriken throwing", "Teleportation mechanics",
@@ -64,16 +64,28 @@ window.PORTFOLIO_PROJECTS = [
         },
         media: [
             {
-                src: "assets/projects/shuriken-teleport.gif",
+                src: "assets/projects/ShurikenObby1.png",
+                type: "Image",
+                label: "Gameplay",
+                alt: "Gameplay"
+            },
+            {
+                src: "assets/projects/ShurikenObbyDemo1.gif",
                 type: "gif",
-                label: "Ability",
+                label: "Gameplay",
                 alt: "Shuriken throw and teleport mechanic demonstration"
             },
             {
-                src: "assets/projects/shuriken-gameplay.png",
-                type: "image",
-                label: "Gameplay",
-                alt: "Shuriken Obby gameplay scene"
+                src: "assets/projects/ShurikenObbyDemo2.gif",
+                type: "gif",
+                label: "Shuriken UI",
+                alt: "Shuriken UI"
+            },
+             {
+                src: "assets/projects/ShurikenObbyDemo3.gif",
+                type: "gif",
+                label: "Shop UI",
+                alt: "Shop UI"
             }
         ],
         githubUrl: "",
