@@ -6,51 +6,6 @@
    ================================================================== */
 window.PORTFOLIO_PROJECTS = [
     {
-        id: "battlegrounds",
-        title: "Battlegrounds Fighting Game",
-        categories: ["Games", "Systems", "UI"],
-        status: "In Development",
-        role: "Programmer, game designer, system designer, and UI/UX designer",
-        description: "A round-based Roblox fighting game featuring character-specific attacks, responsive movement, multiplayer combat systems, custom interfaces, voting, and expandable game architecture.",
-        longDescription: "A combat-focused Roblox experience designed around responsive controls and readable player feedback. The project uses modular character kits, validated client-server communication, state-driven combat, and round management so new fighters, maps, and modes can be added without rewriting the foundation.",
-        technologies: ["Luau", "Rojo", "Finite State Machines", "Roblox Studio", "Client-server networking"],
-        systems: [
-            "Character controllers", "Combat architecture", "M1 attack system",
-            "Dash system", "Damage handling", "Hitbox system", "Status effects",
-            "Animation system", "Round management", "Map and mode voting",
-            "Custom UI", "Sound handling", "Cooldown system"
-        ],
-        cover: {
-            src: "assets/projects/battlegrounds-cover.png",
-            type: "image",
-            label: "Project Cover",
-            alt: "Battlegrounds fighting game project cover"
-        },
-        media: [
-            {
-                src: "assets/projects/battlegrounds-combat.gif",
-                type: "gif",
-                label: "Combat",
-                alt: "Battlegrounds combat system demonstration"
-            },
-            {
-                src: "assets/projects/battlegrounds-dash.gif",
-                type: "gif",
-                label: "Movement",
-                alt: "Battlegrounds dash mechanic demonstration"
-            },
-            {
-                src: "assets/projects/battlegrounds-ui.png",
-                type: "image",
-                label: "UI",
-                alt: "Battlegrounds voting interface"
-            }
-        ],
-        // EDIT: Paste public project links below. Leave empty to hide the button.
-        githubUrl: "",
-        robloxUrl: ""
-    },
-    {
         id: "evolution",
         title: "EVOlution",
         categories: ["Games", "Systems", "UI"],
