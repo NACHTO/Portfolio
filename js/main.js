@@ -259,16 +259,112 @@
         return links.join("");
     }
 
+    function getProjectCardMedia(project) {
+        const seen = new Set();
+        return [project.cover, ...(project.media || [])].filter((item) => {
+            if (!item?.src || seen.has(item.src)) return false;
+            seen.add(item.src);
+            return true;
+        });
+    }
+
+    function initializeProjectCardEffects(article) {
+        const mediaButton = article.querySelector(".project-card__media");
+        const track = article.querySelector(".project-card__track");
+        const dots = [...article.querySelectorAll(".project-card__dot")];
+        if (!mediaButton || !track) return;
+
+        let activeIndex = 0;
+        let cycleTimer = null;
+        let touchStartX = null;
+        let suppressClick = false;
+
+        const setSlide = (nextIndex) => {
+            if (!dots.length) return;
+            activeIndex = (nextIndex + dots.length) % dots.length;
+            track.style.transform = `translate3d(-${activeIndex * 100}%, 0, 0)`;
+            dots.forEach((dot, index) => dot.classList.toggle("is-active", index === activeIndex));
+        };
+
+        const stopCycle = () => {
+            window.clearInterval(cycleTimer);
+            cycleTimer = null;
+        };
+
+        const startCycle = () => {
+            if (reducedMotion || dots.length < 2 || cycleTimer) return;
+            cycleTimer = window.setInterval(() => setSlide(activeIndex + 1), 1150);
+        };
+
+        article.addEventListener("pointerenter", (event) => {
+            if (event.pointerType === "mouse") startCycle();
+        });
+
+        article.addEventListener("pointermove", (event) => {
+            if (reducedMotion || event.pointerType !== "mouse") return;
+            startCycle();
+            article.classList.add("is-pointer-active");
+            const bounds = article.getBoundingClientRect();
+            const x = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+            const y = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
+            article.style.setProperty("--shine-x", `${x * 100}%`);
+            article.style.setProperty("--shine-y", `${y * 100}%`);
+            article.style.setProperty("--tilt-x", `${(0.5 - y) * 3.5}deg`);
+            article.style.setProperty("--tilt-y", `${(x - 0.5) * 3.5}deg`);
+        });
+
+        article.addEventListener("pointerleave", () => {
+            stopCycle();
+            article.classList.remove("is-pointer-active");
+            article.style.setProperty("--tilt-x", "0deg");
+            article.style.setProperty("--tilt-y", "0deg");
+        });
+
+        mediaButton.addEventListener("pointerdown", (event) => {
+            if (event.pointerType !== "touch") return;
+            touchStartX = event.clientX;
+            article.classList.add("is-touched");
+        });
+
+        mediaButton.addEventListener("pointerup", (event) => {
+            article.classList.remove("is-touched");
+            if (event.pointerType !== "touch" || touchStartX === null) return;
+            const distance = event.clientX - touchStartX;
+            touchStartX = null;
+            if (Math.abs(distance) < 34 || dots.length < 2) return;
+            suppressClick = true;
+            setSlide(activeIndex + (distance < 0 ? 1 : -1));
+        });
+
+        mediaButton.addEventListener("pointercancel", () => {
+            touchStartX = null;
+            article.classList.remove("is-touched");
+        });
+
+        mediaButton.addEventListener("click", (event) => {
+            if (!suppressClick) return;
+            suppressClick = false;
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }, true);
+    }
+
     function createProjectCard(project, index) {
         const article = document.createElement("article");
         article.className = "project-card reveal is-visible";
         article.dataset.categories = project.categories.join(",");
         const cover = project.cover || {};
+        const cardMedia = getProjectCardMedia(project);
         const technologies = (project.technologies || []).slice(0, 4);
 
         article.innerHTML = `
             <button class="project-card__media" type="button" data-project-id="${escapeHtml(project.id)}" aria-label="View details for ${escapeHtml(project.title)}">
-                <img src="${escapeHtml(cover.src)}" alt="${escapeHtml(cover.alt || `${project.title} cover`)}" width="800" height="450" loading="lazy" data-label="${escapeHtml(cover.label || "Project media")}">
+                <span class="project-card__track">
+                    ${cardMedia.map((item, mediaIndex) => `<span class="project-card__slide">
+                        <img src="${escapeHtml(item.src)}" alt="${escapeHtml(item.alt || `${project.title} media ${mediaIndex + 1}`)}" width="800" height="450" loading="lazy" data-label="${escapeHtml(item.label || "Project media")}">
+                    </span>`).join("")}
+                </span>
+                ${cardMedia.length > 1 ? `<span class="project-card__dots" aria-hidden="true">${cardMedia.map((_, mediaIndex) => `<span class="project-card__dot${mediaIndex === 0 ? " is-active" : ""}"></span>`).join("")}</span>` : ""}
                 <span class="project-card__overlay" aria-hidden="true">
                     <span class="project-card__index">${String(index + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}</span>
                     <span class="project-card__view">↗</span>
@@ -288,6 +384,7 @@
         article.querySelectorAll("[data-project-id]").forEach((button) => {
             button.addEventListener("click", () => openProjectModal(project, button));
         });
+        initializeProjectCardEffects(article);
         initializeMediaFallbacks(article);
         return article;
     }
