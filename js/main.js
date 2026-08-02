@@ -6,9 +6,8 @@
        Keep this as the single source of truth for the whole page.
        ============================================================== */
     const SITE_CONFIG = {
-        email: "hello@example.com",
-        discord: "your_discord",
-        githubUrl: "https://github.com/YOUR-USERNAME",
+        email: "nacht.contactnow@gmail.com",
+        discord: "nachtoo",
         robloxUrl: "https://www.roblox.com/users/profile?username=ObbyGuy_NcT"
     };
 
@@ -74,7 +73,6 @@
         document.querySelectorAll("[data-discord-text]").forEach((element) => { element.textContent = SITE_CONFIG.discord; });
 
         const externalLinks = [
-            ["[data-github-link]", SITE_CONFIG.githubUrl],
             ["[data-roblox-link]", SITE_CONFIG.robloxUrl]
         ];
 
