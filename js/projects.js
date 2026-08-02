@@ -94,7 +94,7 @@ window.PORTFOLIO_PROJECTS = [
             "UI transitions", "Reusable configuration"
         ],
         cover: {
-            src: "assets/projects/emote-system-cover.png",
+            src: "assets/projects/EmoteWheel.png",
             type: "image",
             label: "Project Cover",
             alt: "Roblox emote system project cover"
