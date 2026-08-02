@@ -12,8 +12,8 @@ window.PORTFOLIO_PROJECTS = [
         status: "Prototype",
         role: "Programmer and game designer",
         description: "An evolution-based Roblox game where players consume objects, gain experience, unlock creatures, and use unique abilities.",
-        longDescription: "A progression prototype that explores a satisfying consume-and-evolve gameplay loop. Players build experience, unlock distinct creatures, and learn creature-specific abilities and passives while supporting systems manage shops, emotes, persistent progress, and moment-to-moment UI feedback.",
-        technologies: ["Luau", "Roblox Studio", "DataStoreService", "UI systems"],
+        longDescription: "A progression prototype that explores a satisfying consume-and-evolve gameplay loop. Players build experience, unlock distinct creatures, and learn creature-specific abilities and passives while supporting systems manage shops, emotes, persistent progress, and moment-to-moment UI feedback. it was inspired by a browser game (EvoWorld.io)",
+        technologies: ["Luau", "Roblox Studio","OOP","FSM","Open-Source Libraries"],
         systems: [
             "Creature progression", "Experience system", "Ability system",
             "Creature-specific passives", "Shops", "Emote system", "UI systems",
@@ -40,7 +40,7 @@ window.PORTFOLIO_PROJECTS = [
             }
         ],
         githubUrl: "",
-        robloxUrl: ""
+        robloxUrl: "https://www.roblox.com/games/81736342024597/EVolutiOn-Rework"
     },
     {
         id: "shuriken-obby",
