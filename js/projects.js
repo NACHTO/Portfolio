@@ -103,14 +103,20 @@ window.PORTFOLIO_PROJECTS = [
             {
                 src: "assets/projects/emote-system.gif",
                 type: "gif",
-                label: "System Demo",
+                label: "System Demo (Toggle)",
                 alt: "Roblox emote system interaction demonstration"
             },
             {
-                src: "assets/projects/emote-wheel.png",
-                type: "image",
-                label: "UI",
-                alt: "Radial emote wheel interface"
+                src: "assets/projects/EmoteWheelEdit.gif",
+                type: "gif",
+                label: "System Demo (Edit)",
+                alt: "Roblox emote system interaction demonstration"
+            },
+            {
+                src: "assets/projects/EmoteWheelDance.gif",
+                type: "gif",
+                label: "System Demo (Play)",
+                alt: "Roblox emote system interaction demonstration"
             }
         ],
         githubUrl: "",
