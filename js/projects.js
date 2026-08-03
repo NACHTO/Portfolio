@@ -27,16 +27,58 @@ window.PORTFOLIO_PROJECTS = [
         },
         media: [
             {
-                src: "assets/projects/evolution-gameplay.gif",
+                src: "assets/projects/evo-playing.gif",
                 type: "gif",
-                label: "Gameplay",
-                alt: "EVOlution creature gameplay demonstration"
+                label: "Play Menu",
+                alt: "EVOlution play and creature index menu demonstration"
             },
             {
-                src: "assets/projects/evolution-ui.png",
-                type: "image",
-                label: "UI",
-                alt: "EVOlution progression user interface"
+                src: "assets/projects/evo-index.gif",
+                type: "gif",
+                label: "Creature Index",
+                alt: "EVOlution creature index interface demonstration"
+            },
+            {
+                src: "assets/projects/evo-eating.gif",
+                type: "gif",
+                label: "Eating Mechanic",
+                alt: "Earth Worm creature eating food to gain experience in EVOlution"
+            },
+            {
+                src: "assets/projects/evo-upgrade.gif",
+                type: "gif",
+                label: "Evolution Upgrade",
+                alt: "Earth Worm evolving into a new creature in EVOlution"
+            },
+            {
+                src: "assets/projects/evo-flying.gif",
+                type: "gif",
+                label: "Creature Progression",
+                alt: "Apple Larva creature moving through the EVOlution game world"
+            },
+            {
+                src: "assets/projects/evo-ability-1.gif",
+                type: "gif",
+                label: "Creature Ability 01",
+                alt: "Apple Larva activating its creature ability in EVOlution"
+            },
+            {
+                src: "assets/projects/evo-ability-2.gif",
+                type: "gif",
+                label: "Creature Ability 02",
+                alt: "Rhinoceros Beetle activating its creature ability in EVOlution"
+            },
+            {
+                src: "assets/projects/evo-emotes.gif",
+                type: "gif",
+                label: "Emote System",
+                alt: "Butterfly creature using the emote system in EVOlution"
+            },
+            {
+                src: "assets/projects/evo-dying.gif",
+                type: "gif",
+                label: "Death Feedback",
+                alt: "Apple Larva death feedback animation in EVOlution"
             }
         ],
         githubUrl: "",
